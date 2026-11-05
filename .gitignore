@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Local data
+.data/
+.local_article_history.json
+
+# Environment variables and secrets
+.env*
+!.env.example
+
+# Build files
+*.tsbuildinfo
+
+# Python leftovers
+__pycache__/
+*.py[cod]
+
+# Logs and system files
+*.log
+.DS_Store

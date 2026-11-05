@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f3efe8;
+  }
+
+  html.dark ::-webkit-scrollbar-track {
+    background: #14161b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d5cec2;
+    border-radius: 9999px;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background: #2f3543;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b8afa0;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: #434b5e;
+  }
+}
