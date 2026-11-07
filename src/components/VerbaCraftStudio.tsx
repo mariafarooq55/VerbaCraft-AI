@@ -892,13 +892,13 @@ export function VerbaCraftStudio({
     <div className="min-h-screen flex flex-col">
       {/* Top Global Studio Header */}
       <header className="sticky top-0 z-30 bg-white/95 dark:bg-[#12141A]/95 backdrop-blur-md border-b border-[#E6E1D8] dark:border-[#242834] transition-colors">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2.5">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 h-auto min-h-16 flex flex-wrap items-center justify-between gap-2.5 py-2">
           {/* Left Brand */}
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3">
             <button
               type="button"
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="lg:hidden p-2 rounded-xl border border-[#E6E1D8] dark:border-[#2A2F3D] text-[#18181B] dark:text-[#F4F4F6] hover:bg-[#FAF8F5] dark:hover:bg-[#1B1E26]"
+              className="lg:hidden p-2 rounded-xl border border-[#E6E1D8] dark:border-[#2A2F3D] text-[#18181B] dark:text-[#F4F4F6] hover:bg-[#FAF8F5] dark:hover:bg-[#1B1E26] shrink-0"
               aria-label="Toggle workflow steps"
             >
               {mobileNavOpen ? (
@@ -908,20 +908,20 @@ export function VerbaCraftStudio({
               )}
             </button>
 
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C84B31] to-[#9E351F] text-white flex items-center justify-center shadow-sm">
+            <div className="flex min-w-0 items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C84B31] to-[#9E351F] text-white flex items-center justify-center shadow-sm shrink-0">
                 <Feather className="w-4 h-4" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-serif font-bold text-lg tracking-tight text-[#18181B] dark:text-[#F4F4F6]">
+              <div className="min-w-0">
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="font-serif font-bold text-base sm:text-lg tracking-tight text-[#18181B] dark:text-[#F4F4F6] truncate">
                     VerbaCraft AI
                   </span>
-                  <span className="hidden md:inline-block text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FAF6F2] dark:bg-[#221A18] text-[#C84B31] dark:text-[#E06348] border border-[#E6C5BA] dark:border-[#E06348]/40">
+                  <span className="hidden md:inline-block text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FAF6F2] dark:bg-[#221A18] text-[#C84B31] dark:text-[#E06348] border border-[#E6C5BA] dark:border-[#E06348]/40 shrink-0">
                     Writing Studio
                   </span>
                 </div>
-                <p className="text-[11px] text-[#71717A] dark:text-[#8E96A8] hidden xl:block">
+                <p className="text-[11px] text-[#71717A] dark:text-[#8E96A8] hidden xl:block truncate">
                   Write an article, make it sound human, and download it
                 </p>
               </div>
@@ -929,7 +929,7 @@ export function VerbaCraftStudio({
           </div>
 
           {/* Center Workspace Switcher */}
-          <nav className="flex items-center gap-1 bg-[#F3EFE8] dark:bg-[#1B1E26] p-1 rounded-xl border border-[#E6E1D8] dark:border-[#2A2F3D]">
+          <nav className="flex min-w-0 items-center gap-1 bg-[#F3EFE8] dark:bg-[#1B1E26] p-1 rounded-xl border border-[#E6E1D8] dark:border-[#2A2F3D] overflow-hidden">
             <button
               type="button"
               onClick={() => setActiveWorkspace("studio")}
@@ -965,7 +965,7 @@ export function VerbaCraftStudio({
           </nav>
 
           {/* Right Global Controls: Quick Export + Dark/Light Mode + Reset */}
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 items-center gap-2">
             {/* Global Header Quick-Export Dropdown */}
             <div className="relative" ref={headerExportRef}>
               <button
@@ -1014,8 +1014,8 @@ export function VerbaCraftStudio({
             {/* Dark & Light Mode Toggle */}
             <ThemeToggle />
 
-            <div className="hidden xl:flex items-center gap-2 pl-2 border-l border-[#E6E1D8] dark:border-[#2A2F3D]">
-              <div className="w-7 h-7 rounded-full bg-[#F5E8DF] dark:bg-[#35231F] text-[#C84B31] dark:text-[#E57459] flex items-center justify-center text-[11px] font-bold">
+            <div className="hidden xl:flex items-center gap-2 pl-2 border-l border-[#E6E1D8] dark:border-[#2A2F3D] min-w-0">
+              <div className="w-7 h-7 rounded-full bg-[#F5E8DF] dark:bg-[#35231F] text-[#C84B31] dark:text-[#E57459] flex items-center justify-center text-[11px] font-bold shrink-0">
                 {currentUser.name.slice(0, 1).toUpperCase()}
               </div>
               <span className="max-w-[110px] truncate text-xs font-medium text-[#52525B] dark:text-[#C6CCD9]">
@@ -1026,7 +1026,7 @@ export function VerbaCraftStudio({
                 onClick={handleLogout}
                 aria-label="Sign out"
                 title="Sign out"
-                className="p-2 rounded-lg text-[#71717A] dark:text-[#8E96A8] hover:bg-[#FAF8F5] dark:hover:bg-[#1B1E26] hover:text-[#C84B31] dark:hover:text-[#E57459]"
+                className="p-2 rounded-lg text-[#71717A] dark:text-[#8E96A8] hover:bg-[#FAF8F5] dark:hover:bg-[#1B1E26] hover:text-[#C84B31] dark:hover:text-[#E57459] shrink-0"
               >
                 <LogOut className="w-3.5 h-3.5" />
               </button>
@@ -1036,7 +1036,7 @@ export function VerbaCraftStudio({
             <button
               type="button"
               onClick={handleResetSession}
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E6E1D8] dark:border-[#2A2F3D] bg-[#FAF8F5] dark:bg-[#1B1E26] text-xs font-medium text-[#52525B] dark:text-[#A1A7B5] hover:text-[#18181B] dark:hover:text-white transition-colors cursor-pointer"
+              className="hidden md:inline-flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E6E1D8] dark:border-[#2A2F3D] bg-[#FAF8F5] dark:bg-[#1B1E26] text-xs font-medium text-[#52525B] dark:text-[#A1A7B5] hover:text-[#18181B] dark:hover:text-white transition-colors cursor-pointer"
               title="Start a brand new article"
             >
               <RotateCcw className="w-3.5 h-3.5" />
