@@ -1,97 +1,194 @@
-# VerbaCraft — Two ways to write
+# VerbaCraft AI — Intelligent Article Generation & Humanization
 
-VerbaCraft includes two separate apps. Both welcome visitors, offer sign-up and sign-in,
-and give each account its own private article history.
+VerbaCraft AI is an AI-powered article writing web application that helps users transform their ideas into professional, well-structured, and natural-sounding articles.
 
-- **A — Streamlit app:** the separate Python project in `python_app/`. Run it with
-  `streamlit run app.py` from that folder. It has its own simple writing desk and
-  optional MongoDB Atlas support.
-- **B — Next.js app:** the main app in this project root. It contains the full article
-  creation studio and the advanced PDF, Word, HTML and TXT exports. It does not show
-  Python or Streamlit pages.
+Built with **Next.js, React, TypeScript, and MongoDB Atlas**, VerbaCraft provides a guided writing workflow, AI-powered content generation, article humanization, editing, analysis, history management, and document exports.
 
-The steps and exports described below are for **B**, the main Next.js app.
+## Features
 
-## What it does, step by step
+- **User Authentication** — Create an account, sign in, and manage your private articles.
+- **AI Title Generation** — Enter an idea and generate six professional article title suggestions.
+- **Title Locking** — Select one title and keep it fixed throughout the entire writing process.
+- **Guided Article Creation** — Answer questions about audience, tone, purpose, and target word count.
+- **Keyword Suggestions** — Discover relevant keywords and add your own phrases.
+- **Article Outline** — Review article sections, headings, and frequently asked questions.
+- **Media and References** — Add relevant images, videos, and trusted sources.
+- **AI Article Generation** — Generate structured article drafts from your selected title and preferences.
+- **Article Humanization** — Rewrite stiff or machine-sounding sentences into more natural language.
+- **Content Analysis** — Analyze article readability and writing quality.
+- **Interactive Editor** — Edit content and preview your article before downloading.
+- **Article History** — Save, search, reopen, update, and delete your articles.
+- **Multiple Export Formats** — Download articles as PDF, Word (.docx), HTML, or TXT.
+- **Responsive Interface** — Access the writing studio through a modern web interface.
 
-1. **Choose your title** — Type an idea and get six title options. Pick one and lock it.
-   The locked title is used in every later step, so it never changes by accident.
-2. **Answer a few questions** — Who is the article for, how should it sound, how long
-   should it be, and what is it for. A few optional questions make the article personal.
-3. **Pick key phrases** — Words and phrases readers may search for. Add your own too.
-4. **Check the outline** — The sections and common questions (FAQs) for the article.
-5. **Add pictures and links** — Choose photos, videos and trusted sources.
-6. **Write the first draft** — The article is written for you and checked for how easy
-   it is to read. The draft is **saved to “My articles” automatically**.
-7. **Make it sound human** — Stiff, machine-sounding lines are rewritten into natural
-   writing. You see the before and after side by side. The finished version is
-   **saved to “My articles” automatically** as well.
-8. **Edit, save and download** — Change any wording in the editor, preview the layout,
-   and download your article to your computer as **PDF, Word (.docx), HTML or TXT**.
+## How It Works
 
-## Where your articles live
+1. **Enter Your Idea** — Provide a topic or rough article idea.
+2. **Choose a Title** — Generate six title suggestions and select one.
+3. **Answer Guided Questions** — Specify your audience, tone, purpose, and desired length.
+4. **Select Keywords** — Review suggested keywords and add custom phrases.
+5. **Review the Outline** — Check the proposed headings, sections, and FAQs.
+6. **Choose Media and References** — Add relevant images, videos, and sources.
+7. **Generate Your Article** — Create the first draft using your selected preferences.
+8. **Humanize Your Content** — Improve the natural flow and readability of your writing.
+9. **Edit and Analyze** — Make changes, review the content, and preview the final article.
+10. **Save and Export** — Store your article in My Articles and download it in your preferred format.
 
-- **My articles** keeps every finished article. You can search it, reopen an article
-  to keep editing, compare the first draft with the rewritten version, download it,
-  or delete it.
-- Saving happens on its own when a draft or a rewritten version is finished, and you
-  can also press **Save to My articles** whenever you like.
+## Technology Stack
 
-## Accounts and saved articles
+### Frontend
 
-Visitors first see the public welcome page, which explains the app. Choose **I want to create an article** to make an account, or sign in if you already have one. The writing studio and article downloads are available after signing in.
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Lucide React
 
-Passwords are stored as secure one-way hashes. Each account has its own private article history; users cannot open, change, download, or delete another person's articles. Sign-in sessions last seven days and are kept in an HTTP-only cookie.
+### Backend
 
-## Light and dark mode
+- Next.js App Router
+- Next.js API Routes
+- Node.js
 
-Use the toggle in the top bar to switch between the light and dark theme. Your choice
-is remembered the next time you open the app.
+### Database
 
-## Downloads
+- MongoDB Atlas
+- MongoDB Node.js Driver
 
-Every download button writes a real file straight to your computer (usually the
-`Downloads` folder). Pictures are embedded in PDF and Word files, and the HTML file
-contains its own copy of each picture. HTML also has videos you can play while online.
-PDF and Word files include video preview pictures with clickable watch links; TXT
-includes picture captions and all the relevant links. If a browser blocks the first
-attempt, a “Download … again” link appears so you can save the file with one more click.
+### AI Integration
 
-## Where are my articles saved?
+- Configurable AI providers through environment variables
+- OpenAI
+- Groq
+- OpenRouter
+- Google Gemini
 
-You do not need a database to use the app.
+### Document Export
 
-- If `DATABASE_URL` is set and the database is reachable, articles are saved there.
-- If it is missing or cannot be reached, articles are saved to a small local file at
-  `.data/articles.json` inside the project folder, and the app tells you
-  “Saved on This computer” in **My articles**. Nothing is lost and no error appears.
+- PDF generation with pdf-lib
+- Word document generation with docx
+- HTML and TXT exports
 
-Once your database is running, set `DATABASE_URL` in `.env` — the table is created
-automatically the first time the app saves something.
+## Project Structure
 
-## Running the project
+```text
+VerbaCraft-AI/
+│
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── articles/
+│   │   │   ├── auth/
+│   │   │   ├── export/
+│   │   │   ├── health/
+│   │   │   └── workflow/
+│   │   ├── login/
+│   │   ├── register/
+│   │   ├── studio/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   │
+│   ├── components/
+│   ├── lib/
+│   └── types/
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── next.config.ts
+└── tsconfig.json
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20.9 or later
+- npm
+- MongoDB Atlas account
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/mariafarooq55/VerbaCraft-AI.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd VerbaCraft-AI
+```
+
+### 3. Install Dependencies
 
 ```bash
 npm install
-npm run dev            # start the app on http://localhost:3000
 ```
 
-Environment variables live in `.env`:
+### 4. Configure Environment Variables
 
-| Key | What it is for |
-| --- | --- |
-| `DATABASE_URL` | Optional PostgreSQL connection. If omitted, articles are saved to `.data/articles.json` |
-| `OPENAI_API_KEY` | Optional. Adds live AI writing (OpenAI, Groq, OpenRouter or Gemini) |
-| `GROQ_API_KEY` / `OPENROUTER_API_KEY` / `GEMINI_API_KEY` | Optional alternatives to OpenAI |
-| `LLM_MODEL` | Optional model name for the provider above |
+Create a `.env` file in the project root and add:
 
-If no AI key is set, the app still works end to end using its built-in writing and
-rewriting engine — you will simply see the built-in assistant name in the sidebar.
+```env
+MONGODB_URI=your_mongodb_atlas_connection_string
+MONGODB_DB_NAME=verbacraft_ai
+AUTH_SECRET=your_private_random_secret
 
-## Built with
+OPENAI_API_KEY=
+OPENAI_BASE_URL=https://api.openai.com/v1
+GROQ_API_KEY=
+OPENROUTER_API_KEY=
+GEMINI_API_KEY=
+LLM_MODEL=gpt-4o-mini
+```
 
-- Next.js (App Router) and React with Tailwind CSS
-- PostgreSQL with Drizzle ORM for saved articles
-- Native document builders for PDF (`pdf-lib`) and Word (`docx`), plus HTML and TXT
-- A built-in writing-quality checker (reading ease, sentence variety, repeated words,
-  robotic phrases and keyword coverage)
+Add your MongoDB Atlas connection string and a strong private authentication secret.
+
+Configure an AI provider key if you want to use its live AI generation services.
+
+**Never upload your `.env` file or expose your database credentials and API keys.**
+
+### 5. Run the Development Server
+
+```bash
+npx next dev --webpack
+```
+
+Open your browser at:
+
+```text
+http://localhost:3000
+```
+
+### 6. Build for Production
+
+```bash
+npm run build
+```
+
+### 7. Start the Production Server
+
+```bash
+npm run start
+```
+
+## Database
+
+VerbaCraft uses MongoDB Atlas to store user accounts and articles.
+
+The application keeps article records associated with their owners, providing private article histories for registered users.
+
+For local development, the application also supports local fallback storage when MongoDB is not configured. For cloud deployment and persistent multi-user storage, configure MongoDB Atlas.
+
+## Deployment
+
+VerbaCraft can be deployed using **Vercel**.
+
+1. Push the project to GitHub.
+2. Import the GitHub repository into Vercel.
+3. Configure the required environment variables in Vercel.
+4. Deploy the application.
+5. Test registration, login, article generation, saving, and exports.
